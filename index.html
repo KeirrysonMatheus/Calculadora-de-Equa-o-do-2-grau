@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Calcular Equação do 2° Grau</title>
+</head>
+<body>
+    <nav class="p-5 d-flex justify-content-center navbar navbar-dark bg-dark">
+        <h1 class="text-capitalize m-lg-3 navbar-brand" href="#">
+           CALCULAR EQUAÇÃO DO 2° GRAU
+        </h1>
+    </nav>
+
+    <main>
+        <div style="margin-top: 10px;" class="modal-title p-3 mb-5 rounded">
+            <div>
+                <h3 class="text-center">Faça o cálculo abaixo</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="quadraticForm">
+                        <div class="mb-3">
+                            <label class="form-label">Digite a equação no formato ax² + bx + c:</label>
+                            <input type="number" class="form-control" id="valorA" placeholder="Informe o valor de a:" required>
+                            <input type="number" class="form-control" id="valorB" placeholder="Informe o valor de b:" required>
+                            <input type="number" class="form-control" id="valorC" placeholder="Informe o valor de c:" required>
+                            
+                        </div>
+                        <button id="btnEquationType1" type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                    <div id="result1" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="quadraticForm">
+                        <div class="mb-3">
+                            <label class="form-label">Digite a equação no formato ax² + bx:</label>
+                            <input type="number" class="form-control" id="valorA" placeholder="Informe o valor de a:" required>
+                            <input type="number" class="form-control" id="valorB" placeholder="Informe o valor de b:" required>
+                            
+                        </div>
+                        <button id="btnEquationType2"type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                    <div id="result2" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="quadraticForm">
+                        <div class="mb-3">
+                            <label class="form-label">Digite a equação no formato ax² + c:</label>
+                            <input type="number" class="form-control" id="valorA" placeholder="Informe o valor de a:" required>
+                            <input type="number" class="form-control" id="valorC" placeholder="Informe o valor de c" required>
+                        </div>
+                        <button id="btnEquationType3" type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                    <div id="result3" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+<script>
+let a,b,c;
+const btnEq1 = document.getElementById('btnEquationType1')
+const btnEq2 = document.getElementById('btnEquationType2')
+const btnEq3 = document.getElementById('btnEquationType3')
+const result1 = document.getElementById('result1')
+const result2 = document.getElementById('result2')
+const result3 = document.getElementById('result3')
+
+// ax² + bx + c = 0
+btnEq1.addEventListener('click', () => {
+    event.preventDefault()
+    a = Number(document.getElementById('valorA').value);
+    b = Number(document.getElementById('valorB').value);
+    c = Number(document.getElementById('valorC').value)
+
+    if(a == 0 || b == 0 || c == 0 || isNaN(a) || isNaN(b) || isNaN(c) || a == '' || b == '' || c == '') {
+        alert('Insira um valor válido')
+        return;
+    }
+
+    let delta =  (b**2) - (4*a*c);
+
+     if (delta <= 0 ) {
+        result1.innerHTML = `<p style="color: orange;">Não há soluções reais (Δ = ${delta})</p>`;
+        return;
+    }
+
+    let x1 = (-b + Math.sqrt(delta))/(2*a);
+    let x2 = (-b - Math.sqrt(delta))/(2*a);
+    console.log(x1, x2)
+    result1.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
+})
+// ax² + bx = 0
+btnEq2.addEventListener('click', () => {
+    event.preventDefault()
+    a = Number(document.getElementById('valorA').value);
+    b = Number(document.getElementById('valorB').value);
+    if(a == 0 || b == 0 || isNaN(a) || isNaN(b) || a == '' || b == '' ) {
+        alert('Insira um valor válido')
+        return;
+    }
+
+    let x1 = 0
+    let x2 = -b/a;    
+    result2.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
+});
+
+btnEq3.addEventListener('click', () => {
+    event.preventDefault()
+    a = Number(document.getElementById('valorA').value);
+    b = Number(document.getElementById('valorB').value);
+    c = Number(document.getElementById('valorC').value);
+
+    if(a == 0 || b == 0 || c == 0 || isNaN(a) || isNaN(b) || isNaN(c) || a == '' || b == '' || c == '') {
+        alert('Insira um valor válido')
+        return;
+    }
+    // ax² + c = 0
+    let x1 = Math.sqrt(-c/a)
+    let x2 = -Math.sqrt(-c/a)
+    result3.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
+})
+</script>
+</body>
+</html>
