@@ -132,11 +132,19 @@ btnEq3.addEventListener('click', () => {
         alert('Insira um valor válido')
         return;
     }
+
     // ax² + c = 0
-    let x1 = Math.sqrt(-c/a)
-    let x2 = -Math.sqrt(-c/a)
-    result3.innerHTML = ""
-    result3.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
+    let discriminant = -c / a;
+
+    if (discriminant < 0) {
+        result3.innerHTML = "";
+        result3.innerHTML = `<p style="color: orange;">Não há soluções reais</p>`;
+    } else {
+        let x1 = Math.sqrt(discriminant);
+        let x2 = -Math.sqrt(discriminant);
+        result3.innerHTML = "";
+        result3.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`;
+    }
 })
 </script>
 </body>
