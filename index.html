@@ -96,6 +96,7 @@ btnEq1.addEventListener('click', () => {
     let delta =  (b**2) - (4*a*c);
 
      if (delta <= 0 ) {
+        result1.innerHTML = ""
         result1.innerHTML = `<p style="color: orange;">Não há soluções reais (Δ = ${delta})</p>`;
         return;
     }
@@ -103,6 +104,7 @@ btnEq1.addEventListener('click', () => {
     let x1 = (-b + Math.sqrt(delta))/(2*a);
     let x2 = (-b - Math.sqrt(delta))/(2*a);
     console.log(x1, x2)
+    result1.innerHTML = ""
     result1.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
 })
 // ax² + bx = 0
@@ -117,6 +119,7 @@ btnEq2.addEventListener('click', () => {
 
     let x1 = 0
     let x2 = -b/a;    
+    result2.innerHTML = ""
     result2.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
 });
 
@@ -133,6 +136,7 @@ btnEq3.addEventListener('click', () => {
     // ax² + c = 0
     let x1 = Math.sqrt(-c/a)
     let x2 = -Math.sqrt(-c/a)
+    result3.innerHTML = ""
     result3.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
 })
 </script>
