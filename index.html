@@ -103,8 +103,8 @@ btnEq1.addEventListener('click', () => {
         return;
     }
 
-    let x1 = (-b + Math.sqrt(delta))/(2*a);
-    let x2 = (-b - Math.sqrt(delta))/(2*a);
+    let x1 = Math.floor((-b + Math.sqrt(delta))/(2*a));
+    let x2 = Math.floor((-b - Math.sqrt(delta))/(2*a));
     console.log(x1, x2)
     result1.innerHTML = ""
     result1.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
@@ -120,7 +120,7 @@ btnEq2.addEventListener('click', () => {
     }
 
     let x1 = 0
-    let x2 = -b/a;    
+    let x2 = Math.floor(-b/a);    
     result2.innerHTML = ""
     result2.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`
 });
@@ -142,8 +142,8 @@ btnEq3.addEventListener('click', () => {
         result3.innerHTML = "";
         result3.innerHTML = `<p style="color: orange;">Não há soluções reais</p>`;
     } else {
-        let x1 = Math.sqrt(discriminant);
-        let x2 = -Math.sqrt(discriminant);
+        let x1 = Math.floor(Math.sqrt(discriminant));
+        let x2 = Math.floor(-Math.sqrt(discriminant));
         result3.innerHTML = "";
         result3.innerHTML = `<p>x1 = ${x1} <br> x2 = ${x2}</p>`;
     }
